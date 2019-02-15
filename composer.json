@@ -16,7 +16,7 @@
         "name": "Sandesh",
         "email": "sandesh.says@gmail.com"
     }],
-    "minimum-stability": "develop",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6",
         "barryvdh/laravel-dompdf": "0.8.*",

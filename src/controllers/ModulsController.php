@@ -1,5 +1,6 @@
 <?php namespace crocodicstudio\crudbooster\controllers;
 
+use CB;
 use CRUDBooster;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Excel;
@@ -70,7 +71,7 @@ class ModulsController extends CBController
  				$('#table_name').change(function() {
 					var v = $(this).val();
 					$('#path').val(v);
-				})	
+				})
  			})
  			";
 
@@ -196,7 +197,7 @@ class ModulsController extends CBController
 
     public function getTableColumns($table)
     {
-        $columns = CRUDBooster::getTableColumns($table);
+        $columns = CB::getTableColumns($table);
 
         return response()->json($columns);
     }
@@ -271,7 +272,7 @@ class ModulsController extends CBController
 
         $row = DB::table('cms_moduls')->where('id', $id)->first();
 
-        $columns = CRUDBooster::getTableColumns($row->table_name);
+        $columns = CB::getTableColumns($row->table_name);
 
         $tables = CRUDBooster::listTables();
         $table_list = [];
@@ -471,7 +472,7 @@ class ModulsController extends CBController
 
         $row = DB::table('cms_moduls')->where('id', $id)->first();
 
-        $columns = CRUDBooster::getTableColumns($row->table_name);
+        $columns = CB::getTableColumns($row->table_name);
 
         if (file_exists(app_path('Http/Controllers/'.$row->controller.'.php'))) {
             $response = file_get_contents(app_path('Http/Controllers/'.$row->controller.'.php'));

@@ -36,6 +36,8 @@ return [
 
     'MAIN_DB_DATABASE' => env('DB_DATABASE'), //Very useful if you use config:cache
 
+    'MAIN_DB_SCHEMA' => env('DB_SCHEMA'),
+
     'MULTIPLE_DATABASE_MODULE' => [],
 
     /*

@@ -35,7 +35,7 @@ class CmsEmailTemplates extends Seeder
                 'content' => '<p>Hi,</p><p>Someone requested forgot password, here is your new password : </p><p>[password]</p><p><br></p><p>--</p><p>Regards,</p><p>Admin</p>',
                 'description' => '[password]',
                 'from_name' => 'System',
-                'from_email' => 'system@crudbooster.com',
+                'from_email' => 'system@test.com',
                 'cc_email' => null,
             ]);
     }
@@ -290,6 +290,24 @@ class Cms_privilegesSeeder extends Seeder
                 'theme_color' => 'skin-red',
             ]);
         }
+
+        if (DB::table('cms_privileges')->where('name', 'Administrator')->count() == 0) {
+            DB::table('cms_privileges')->insert([
+                'created_at' => date('Y-m-d H:i:s'),
+                'name' => 'Administrator',
+                'is_superadmin' => 0,
+                'theme_color' => 'skin-green',
+            ]);
+        }
+
+        if (DB::table('cms_privileges')->where('name', 'General User')->count() == 0) {
+            DB::table('cms_privileges')->insert([
+                'created_at' => date('Y-m-d H:i:s'),
+                'name' => 'General User',
+                'is_superadmin' => 0,
+                'theme_color' => 'skin-blue',
+            ]);
+        }
     }
 }
 
@@ -447,9 +465,23 @@ class Cms_usersSeeder extends Seeder
             $cms_users = DB::table('cms_users')->insert([
                 'created_at' => date('Y-m-d H:i:s'),
                 'name' => 'Super Admin',
-                'email' => 'admin@crudbooster.com',
+                'email' => 'admin@admin.com',
                 'password' => $password,
                 'id_cms_privileges' => 1,
+                'status' => 'Active',
+            ],[
+                'created_at' => date('Y-m-d H:i:s'),
+                'name' => 'Admin',
+                'email' => 'admin@test.com',
+                'password' => $password,
+                'id_cms_privileges' => 2,
+                'status' => 'Active',
+            ],[
+                'created_at' => date('Y-m-d H:i:s'),
+                'name' => 'General User',
+                'email' => 'user@test.com',
+                'password' => $password,
+                'id_cms_privileges' => 3,
                 'status' => 'Active',
             ]);
         }

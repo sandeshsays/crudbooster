@@ -20,6 +20,8 @@ class AddTableCmsUsers extends Migration
             $table->string('email')->nullable();
             $table->string('password')->nullable();
             $table->integer('id_cms_privileges')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('ward_no')->nullable();
 
             $table->timestamps();
         });

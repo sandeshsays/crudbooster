@@ -29,15 +29,15 @@ class CmsEmailTemplates extends Seeder
     public function run()
     {
         DB::table('cms_email_templates')->insert([
-                'created_at' => date('Y-m-d H:i:s'),
-                'name' => 'Email Template Forgot Password Backend',
-                'slug' => 'forgot_password_backend',
-                'content' => '<p>Hi,</p><p>Someone requested forgot password, here is your new password : </p><p>[password]</p><p><br></p><p>--</p><p>Regards,</p><p>Admin</p>',
-                'description' => '[password]',
-                'from_name' => 'System',
-                'from_email' => 'system@test.com',
-                'cc_email' => null,
-            ]);
+            'created_at' => date('Y-m-d H:i:s'),
+            'name' => 'Email Template Forgot Password Backend',
+            'slug' => 'forgot_password_backend',
+            'content' => '<p>Hi,</p><p>Someone requested forgot password, here is your new password : </p><p>[password]</p><p><br></p><p>--</p><p>Regards,</p><p>Admin</p>',
+            'description' => '[password]',
+            'from_name' => 'System',
+            'from_email' => 'system@test.com',
+            'cc_email' => null,
+        ]);
     }
 }
 
@@ -469,22 +469,28 @@ class Cms_usersSeeder extends Seeder
                 'password' => $password,
                 'id_cms_privileges' => 1,
                 'status' => 'Active',
-            ],[
+                'client_id' => 1,
+                'ward_no' => 1,
+            ], [
                 'created_at' => date('Y-m-d H:i:s'),
                 'name' => 'Admin',
                 'email' => 'admin@test.com',
                 'password' => $password,
                 'id_cms_privileges' => 2,
                 'status' => 'Active',
-            ],[
+                'client_id' => 1,
+                'ward_no' => 1,
+
+            ], [
                 'created_at' => date('Y-m-d H:i:s'),
                 'name' => 'General User',
                 'email' => 'user@test.com',
                 'password' => $password,
                 'id_cms_privileges' => 3,
                 'status' => 'Active',
+                'client_id' => 1,
+                'ward_no' => 1,
             ]);
         }
     }
 }
-
